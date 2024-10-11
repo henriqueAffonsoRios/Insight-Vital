@@ -8,24 +8,10 @@ export const FooterContainer = styled.footer`
   align-items: center;
   justify-content: space-around;
   gap: 150px;
-  margin-top: 70px;
   padding: 30px 70px;
-
-  p {
-    text-align: center;
-    font-size: 15px;
-    font-weight: bold;
-  }
-`
-
-export const SelectContainer = styled.div`
-  position: relative;
-  display: inline-block;
 
   select {
     appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
     background-color: ${cores.amarelo};
     border: none;
     border-radius: 5px;
@@ -33,12 +19,23 @@ export const SelectContainer = styled.div`
     font-weight: bold;
     cursor: pointer;
     padding: 5px 30px;
-    text-align: center;
     outline: none;
+    text-align: center;
+
+    option {
+      text-align: center;
+      font-weight: bold;
+    }
 
     &:hover {
       background-color: #f1c40f;
     }
+  }
+
+  p {
+    text-align: center;
+    font-size: 15px;
+    font-weight: bold;
   }
 `
 

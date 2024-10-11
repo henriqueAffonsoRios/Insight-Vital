@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { Dropdown } from 'react-bootstrap'
+import { Button, Dropdown, Form } from 'react-bootstrap'
 import { cores } from '../../styles'
 
 export const ToggleDropdown = styled(Dropdown.Toggle)`
@@ -69,5 +69,52 @@ export const Item = styled(Dropdown.Item)`
     background-color: ${cores.amarelo} !important;
     border-color: ${cores.amarelo} !important;
     outline: none !important;
+  }
+`
+
+export const DropdownContainer = styled.div`
+  position: relative;
+  display: flex;
+  align-items: center;
+`
+
+export const Buscar = styled.input`
+  width: 100%;
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid ${cores.azul};
+  background-color: ${cores.amarelo};
+`
+
+export const EstadoList = styled.div`
+  max-height: 60px; /* Altura máxima para a lista de estados */
+  overflow-y: auto;
+  border-top: 1px solid #ccc;
+
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 3px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: ${cores.azul};
+    border-radius: 3px;
+    cursor: pointer;
+  }
+`
+
+export const Btn = styled.button`
+  position: absolute;
+  right: 10px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+
+  &:hover {
+    background-color: transparent !important;
   }
 `

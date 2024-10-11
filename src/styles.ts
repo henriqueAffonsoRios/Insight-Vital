@@ -19,24 +19,12 @@ const GlobalCss = createGlobalStyle`
   body {
     background-color: ${cores.cinza};
   }
-
-  .container {
-    max-width: 1024px;
-    width: 100%;
-    margin: 0 auto;
-  }
 `
 
 export const Main = styled.div`
   background-color: ${cores.cinzaClaro};
   border-radius: 10px;
   overflow: hidden;
-`
-
-export const Content = styled.div`
-  display: grid;
-  grid-template-rows: auto 1fr auto;
-  min-height: 100vh;
 `
 
 export default GlobalCss

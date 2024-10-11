@@ -1,28 +1,25 @@
-import AnoComponente from '../Ano'
-import BotaoComponente from '../Botao'
-import IdadeComponente from '../Idade'
+import DropdownEstado from '../Estado'
+import ModeloGrafico from '../ModeloGrafico'
 import SexoComponente from '../Sexo'
 
-import { FilterContainer, FilterList, Item, Main } from './styles'
+import { FilterContainer, Item } from './styles'
 
 const BarraFiltro = () => {
   return (
-    <Main className="container">
-      <FilterContainer>
-        <FilterList>
-          <Item>
-            <SexoComponente />
-          </Item>
-          <Item>
-            <IdadeComponente />
-          </Item>
-          <Item>
-            <AnoComponente />
-          </Item>
-        </FilterList>
-        <BotaoComponente />
-      </FilterContainer>
-    </Main>
+    <FilterContainer className="d-flex align-center justify-content-between p-4 px-5">
+      <ul className="d-flex p-0 m-0">
+        <Item className="mx-4">
+          <SexoComponente />
+        </Item>
+        <Item className="mx-4">
+          <DropdownEstado />
+        </Item>
+        <Item className="mx-4">
+          <ModeloGrafico />
+        </Item>
+      </ul>
+      <button className="btn my-5 px-5">Filtrar</button>
+    </FilterContainer>
   )
 }
 

@@ -1,17 +1,15 @@
 import linkedin from '../../assets/images/linkedin.png'
 import github from '../../assets/images/github.png'
 
-import { FooterContainer, SelectContainer, ListaIcones } from './styles'
+import { FooterContainer, ListaIcones } from './styles'
 
 const Footer = () => {
   return (
     <FooterContainer>
-      <SelectContainer>
-        <select>
-          <option>Português</option>
-          <option>Inglês</option>
-        </select>
-      </SelectContainer>
+      <select>
+        <option>Português</option>
+        <option>Inglês</option>
+      </select>
       <p>
         &copy; 2024 Insight Vital. Todos os direitos reservados. O conteúdo
         deste site é protegido por leis de direitos autorais e outras

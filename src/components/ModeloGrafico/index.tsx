@@ -3,7 +3,7 @@ import { Dropdown } from 'react-bootstrap'
 
 import { ToggleDropdown, MenuDropdown, Item } from './styles'
 
-const SexoComponente = () => {
+const ModeloGrafico = () => {
   const [selectedDropdown, setSelectedDropdown] = useState('Selecionar')
   const [dropdownOpen, setDropdownOpen] = useState(false)
 
@@ -16,14 +16,14 @@ const SexoComponente = () => {
 
   return (
     <>
-      <h4>Sexo</h4>
+      <h4>Modelo de gráfico</h4>
       <Dropdown show={dropdownOpen} onToggle={toggleDropdown}>
         <ToggleDropdown className="px-4 text-center w-100 d-flex justify-content-center align-items-center">
           {selectedDropdown}
         </ToggleDropdown>
         <MenuDropdown className="w-100 text-center">
-          <Item onClick={() => handleSelect('Masculino')}>Masculino</Item>
-          <Item onClick={() => handleSelect('Feminino')}>Feminino</Item>
+          <Item onClick={() => handleSelect('Percentual')}>Percentual</Item>
+          <Item onClick={() => handleSelect('Normalizado')}>Normalizado</Item>
           <Item onClick={() => handleSelect('Ambos')}>Ambos</Item>
         </MenuDropdown>
       </Dropdown>
@@ -31,4 +31,4 @@ const SexoComponente = () => {
   )
 }
 
-export default SexoComponente
+export default ModeloGrafico
