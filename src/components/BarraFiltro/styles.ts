@@ -11,6 +11,22 @@ export const FilterContainer = styled.section`
     font-size: 20px;
     font-weight: bold;
 
+    &:active,
+    &:checked {
+      background-color: ${cores.amarelo} !important;
+      border-color: ${cores.amarelo} !important;
+      color: ${cores.azul} !important;
+      outline: none !important;
+    }
+
+    &.btn:focus,
+    &.btn:active,
+    &.btn.show {
+      background-color: ${cores.amarelo} !important;
+      border-color: ${cores.amarelo} !important;
+      color: ${cores.azul} !important;
+    }
+
     &:hover {
       background-color: #f1c40f;
     }
@@ -21,7 +37,6 @@ export const Item = styled.li`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 215px;
 
   h4 {
     text-align: center;

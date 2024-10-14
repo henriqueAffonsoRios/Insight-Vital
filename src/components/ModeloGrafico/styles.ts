@@ -6,6 +6,7 @@ export const ToggleDropdown = styled(Dropdown.Toggle)`
   border: none;
   box-shadow: none;
   position: relative;
+  padding-right: 20px;
 
   &:hover,
   &:active,

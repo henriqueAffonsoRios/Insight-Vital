@@ -5,13 +5,18 @@ import { cores } from '../../styles'
 export const HeaderContainer = styled.header`
   background-color: ${cores.azul};
 
+  button {
+    background-color: transparent;
+    border: none;
+  }
+
   .container {
     > img {
       width: 110px;
     }
 
     li {
-      a > img {
+      button > img {
         height: 30px;
       }
     }
