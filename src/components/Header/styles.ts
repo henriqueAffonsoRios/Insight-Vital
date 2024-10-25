@@ -51,6 +51,12 @@ export const NavMobile = styled.nav`
     display: block;
   }
 
+  @media (min-width: ${breakpoints.tablet}) {
+    &.is-open {
+      display: none;
+    }
+  }
+
   ul {
     @media (max-width: ${breakpoints.tablet}) {
       margin-left: 0;
