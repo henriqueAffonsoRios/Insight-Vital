@@ -1,12 +1,15 @@
 import styled from 'styled-components'
 import { Dropdown } from 'react-bootstrap'
-import { cores } from '../../styles'
+import { breakpoints, cores } from '../../styles'
 
 export const ToggleDropdown = styled(Dropdown.Toggle)`
   border: none;
   box-shadow: none;
   position: relative;
   font-size: 15px !important;
+  font-weight: bold;
+  background-color: ${cores.amarelo};
+  color: ${cores.azul};
 
   &:hover,
   &:active,
@@ -25,24 +28,45 @@ export const ToggleDropdown = styled(Dropdown.Toggle)`
     color: ${cores.azul} !important;
   }
 
-  &.show {
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
-  }
-
   &::after {
     position: absolute;
     right: 1rem;
   }
+
+  @media (min-width: ${breakpoints.desktop}) {
+    &.show {
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+    }
+  }
+
+  @media (max-width: ${breakpoints.desktop}) {
+    &.show {
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+  }
 `
 
-export const MenuDropdown = styled(Dropdown.Menu)`
+export const MenuDropdown = styled(Dropdown.Menu)<{ menuWidth: number }>`
   margin-top: 0;
   background-color: ${cores.amarelo};
   border: none;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
-  transform: translate(0px, 34px) !important;
+  transform: translate(0px, 32px) !important;
+  min-width: inherit !important;
+  width: ${(props) => props.menuWidth}px !important;
+
+  @media (min-width: ${breakpoints.desktop}) {
+    transform: translate(0px, -78px) !important;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  @media (max-width: ${breakpoints.desktop}) {
+    transform: translate(0px, 32px) !important;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+  }
 
   &:hover,
   &:focus,
@@ -70,52 +94,5 @@ export const Item = styled(Dropdown.Item)`
     background-color: ${cores.amarelo} !important;
     border-color: ${cores.amarelo} !important;
     outline: none !important;
-  }
-`
-
-export const DropdownContainer = styled.div`
-  position: relative;
-  display: flex;
-  align-items: center;
-`
-
-export const Buscar = styled.input`
-  width: 100%;
-  padding: 5px;
-  border-radius: 5px;
-  border: 1px solid ${cores.azul};
-  background-color: ${cores.amarelo};
-`
-
-export const EstadoList = styled.div`
-  max-height: 60px; /* Altura máxima para a lista de estados */
-  overflow-y: auto;
-  border-top: 1px solid #ccc;
-
-  &::-webkit-scrollbar {
-    width: 6px;
-  }
-
-  &::-webkit-scrollbar-track {
-    background: rgba(0, 0, 0, 0.1);
-    border-radius: 3px;
-  }
-
-  &::-webkit-scrollbar-thumb {
-    background-color: ${cores.azul};
-    border-radius: 3px;
-    cursor: pointer;
-  }
-`
-
-export const Btn = styled.button`
-  position: absolute;
-  right: 10px;
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-
-  &:hover {
-    background-color: transparent !important;
   }
 `

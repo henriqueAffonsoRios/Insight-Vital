@@ -24,8 +24,13 @@ function App() {
           toggleDarkMode={toggleDarkMode}
           toggleLightMode={toggleLightMode}
         />
-        <Main isDarkMode={darkMode} className="container p-0 flex-grow-1 my-5">
+        <div className="container p-0 mt-5">
           <BarraFiltro />
+        </div>
+        <Main
+          isDarkMode={darkMode}
+          className="container p-5 mb-5 d-flex align-items-center justify-content-center"
+        >
           <ConteudoPrincipal />
         </Main>
         <Footer />

@@ -18,7 +18,7 @@ const SexoComponente = () => {
     <>
       <h4>Sexo</h4>
       <Dropdown show={dropdownOpen} onToggle={toggleDropdown}>
-        <ToggleDropdown className="px-4 text-center w-100 d-flex justify-content-center align-items-center">
+        <ToggleDropdown className="text-center w-100 d-flex justify-content-center align-items-center">
           {selectedDropdown}
         </ToggleDropdown>
         <MenuDropdown className="w-100 text-center">

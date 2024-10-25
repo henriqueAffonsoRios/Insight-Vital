@@ -13,6 +13,11 @@ export const cores = {
   cinzaEscuro: '#1A1A1A'
 }
 
+export const breakpoints = {
+  desktop: '991px',
+  tablet: '768px'
+}
+
 const GlobalCss = createGlobalStyle<ContainerProps>`
   * {
     margin: 0;
@@ -31,8 +36,10 @@ const GlobalCss = createGlobalStyle<ContainerProps>`
 export const Main = styled.div<ContainerProps>`
   background-color: ${(props) =>
     props.isDarkMode ? cores.preto : cores.cinzaClaro};
-  border-radius: 10px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
   overflow: hidden;
+  flex: 1;
 `
 
 export default GlobalCss

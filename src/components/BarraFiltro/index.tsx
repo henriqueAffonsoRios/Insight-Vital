@@ -6,19 +6,21 @@ import { FilterContainer, Item } from './styles'
 
 const BarraFiltro = () => {
   return (
-    <FilterContainer className="d-flex align-center justify-content-between p-4 px-5">
-      <ul className="d-flex p-0 m-0">
-        <Item className="mx-4">
+    <FilterContainer className="row d-flex align-items-center justify-content-between p-5 m-0">
+      <ul className="d-flex m-0 col-lg-9 col-12 p-0 justify-content-center align-items-center flex-md-row flex-column">
+        <Item className="col-lg-4 col-md-4 col-12">
           <SexoComponente />
         </Item>
-        <Item className="mx-4">
+        <Item className="col-lg-4 col-md-4 col-12">
           <DropdownEstado />
         </Item>
-        <Item className="mx-4">
+        <Item className="col-lg-4 col-md-4 col-12">
           <ModeloGrafico />
         </Item>
       </ul>
-      <button className="btn my-5 px-5">Filtrar</button>
+      <div className="col-lg-auto col-12 mt-lg-0 mt-3 p-0">
+        <button className="btn w-100 px-5">Filtrar</button>
+      </div>
     </FilterContainer>
   )
 }

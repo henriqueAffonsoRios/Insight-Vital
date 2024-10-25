@@ -6,7 +6,7 @@ export const ToggleDropdown = styled(Dropdown.Toggle)`
   border: none;
   box-shadow: none;
   position: relative;
-  padding-right: 20px;
+  font-size: 15px !important;
 
   &:hover,
   &:active,
@@ -42,7 +42,7 @@ export const MenuDropdown = styled(Dropdown.Menu)`
   border: none;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
-  transform: translate(0px, 42px) !important;
+  transform: translate(0px, 34px) !important;
 
   &:hover,
   &:focus,

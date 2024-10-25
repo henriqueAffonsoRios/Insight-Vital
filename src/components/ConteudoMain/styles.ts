@@ -5,8 +5,6 @@ export const ContainerPai = styled.div`
   background-color: ${cores.azul};
   border-radius: 10px;
   color: ${cores.amarelo};
-  width: 75%;
-  margin: 52px auto;
   padding: 38px 80px;
   text-align: center;
 

@@ -1,4 +1,6 @@
-import { HeaderContainer } from './styles'
+import { useState } from 'react'
+
+import * as S from './styles'
 
 import logo from '../../assets/images/logo.png'
 import avatar from '../../assets/images/avatar.svg'
@@ -12,8 +14,10 @@ interface ThemeToggleProps {
 }
 
 const Header = ({ toggleDarkMode, toggleLightMode }: ThemeToggleProps) => {
+  const [isOpen, setIsOpen] = useState(false)
+
   return (
-    <HeaderContainer>
+    <S.HeaderContainer>
       <div className="container p-0 d-flex flex-wrap justify-content-between align-items-center">
         <img src={logo} alt="Insight Vital" />
         <ul className="nav navbar navbar-expand">
@@ -38,8 +42,41 @@ const Header = ({ toggleDarkMode, toggleLightMode }: ThemeToggleProps) => {
             </button>
           </li>
         </ul>
+        <S.Hamburguer onClick={() => setIsOpen(!isOpen)}>
+          <span />
+          <span />
+          <span />
+        </S.Hamburguer>
       </div>
-    </HeaderContainer>
+      <S.NavMobile className={isOpen ? 'is-open' : ''}>
+        <ul className="nav navbar navbar-expand">
+          <li className="nav-item">
+            <button className="navbar-brand">
+              <img src={avatar} alt="Narrator mode icon" />
+              <p>Modo narrador</p>
+            </button>
+          </li>
+          <li className="nav-item">
+            <button className="navbar-brand">
+              <img src={blind} alt="Blindness mode icon" />
+              <p>Modo daltonismo</p>
+            </button>
+          </li>
+          <li className="nav-item">
+            <button className="navbar-brand" onClick={toggleLightMode}>
+              <img src={sun} alt="Light mode icon" />
+              <p>Tema claro</p>
+            </button>
+          </li>
+          <li className="nav-item">
+            <button className="navbar-brand" onClick={toggleDarkMode}>
+              <img src={night} alt="Dark mode icon" />
+              <p>Tema escuro</p>
+            </button>
+          </li>
+        </ul>
+      </S.NavMobile>
+    </S.HeaderContainer>
   )
 }
 

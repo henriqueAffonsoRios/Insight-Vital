@@ -1,16 +1,21 @@
 import styled from 'styled-components'
-import { cores } from '../../styles'
+import { breakpoints, cores } from '../../styles'
 
 export const FilterContainer = styled.section`
   background-color: ${cores.azul};
-  border-radius: 10px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+
+  ul {
+    gap: 10px;
+  }
 
   button {
     background-color: ${cores.amarelo};
     color: ${cores.azul};
     font-size: 20px;
     font-weight: bold;
-
+    &:hover,
     &:active,
     &:checked {
       background-color: ${cores.amarelo} !important;
@@ -26,10 +31,6 @@ export const FilterContainer = styled.section`
       border-color: ${cores.amarelo} !important;
       color: ${cores.azul} !important;
     }
-
-    &:hover {
-      background-color: #f1c40f;
-    }
   }
 `
 
@@ -38,13 +39,16 @@ export const Item = styled.li`
   flex-direction: column;
   justify-content: center;
 
+  @media (max-width: ${breakpoints.tablet}) {
+    margin-bottom: 20px;
+  }
+
   h4 {
     text-align: center;
     color: ${cores.amarelo};
   }
 
   label {
-    font-size: 16px;
     font-weight: bold;
     user-select: none;
   }

@@ -16,9 +16,13 @@ const ModeloGrafico = () => {
 
   return (
     <>
-      <h4>Modelo de gráfico</h4>
-      <Dropdown show={dropdownOpen} onToggle={toggleDropdown}>
-        <ToggleDropdown className="px-4 text-center w-100 d-flex justify-content-center align-items-center">
+      <h4 className="text-truncate">Modelo de gráfico</h4>
+      <Dropdown
+        show={dropdownOpen}
+        onToggle={toggleDropdown}
+        className="custom-dropdown"
+      >
+        <ToggleDropdown className="text-center w-100 d-flex justify-content-center align-items-center">
           {selectedDropdown}
         </ToggleDropdown>
         <MenuDropdown className="w-100 text-center">

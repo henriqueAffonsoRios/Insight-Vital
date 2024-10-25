@@ -1,14 +1,17 @@
 import styled from 'styled-components'
-import { cores } from '../../styles'
+import { breakpoints, cores } from '../../styles'
 
 export const FooterContainer = styled.footer`
   background-color: ${cores.azul};
   color: ${cores.amarelo};
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  gap: 150px;
-  padding: 30px 70px;
+
+  .container {
+    > div {
+      @media (max-width: ${breakpoints.desktop}) {
+        gap: 10px;
+      }
+    }
+  }
 
   select {
     appearance: none;
@@ -18,17 +21,29 @@ export const FooterContainer = styled.footer`
     color: ${cores.azul};
     font-weight: bold;
     cursor: pointer;
-    padding: 5px 30px;
-    outline: none;
-    text-align: center;
+
+    &:focus {
+      outline: none;
+      box-shadow: none;
+    }
+
+    &.show {
+      border-bottom-left-radius: 0;
+      border-bottom-right-radius: 0;
+    }
 
     option {
       text-align: center;
       font-weight: bold;
-    }
+      border: none;
+      outline: none;
 
-    &:hover {
-      background-color: #f1c40f;
+      &:focus,
+      &:checked,
+      &:active {
+        background-color: ${cores.amarelo};
+        color: ${cores.azul};
+      }
     }
   }
 
@@ -36,15 +51,5 @@ export const FooterContainer = styled.footer`
     text-align: center;
     font-size: 15px;
     font-weight: bold;
-  }
-`
-
-export const ListaIcones = styled.ul`
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
-  li {
-    margin-left: 15px;
   }
 `

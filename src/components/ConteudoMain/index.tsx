@@ -7,7 +7,7 @@ const ConteudoPrincipal = () => {
     'Você não está sozinho. Cada dado aqui conta uma história, e juntos podemos fazer a diferença.'
 
   return (
-    <ContainerPai>
+    <ContainerPai className="mx-5">
       <h4>{texto}</h4>
       <img src={laco} alt="laço amarelo" />
     </ContainerPai>
