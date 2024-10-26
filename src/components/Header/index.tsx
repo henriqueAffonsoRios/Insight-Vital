@@ -7,13 +7,17 @@ import avatar from '../../assets/images/avatar.svg'
 import blind from '../../assets/images/blind.svg'
 import sun from '../../assets/images/sun.svg'
 import night from '../../assets/images/night.svg'
-
-interface ThemeToggleProps {
+interface HeaderProps {
   toggleDarkMode: () => void
   toggleLightMode: () => void
+  onOpenModal: () => void
 }
 
-const Header = ({ toggleDarkMode, toggleLightMode }: ThemeToggleProps) => {
+const Header = ({
+  toggleDarkMode,
+  toggleLightMode,
+  onOpenModal
+}: HeaderProps) => {
   const [isOpen, setIsOpen] = useState(false)
 
   return (
@@ -27,7 +31,7 @@ const Header = ({ toggleDarkMode, toggleLightMode }: ThemeToggleProps) => {
             </button>
           </li>
           <li className="nav-item">
-            <button className="navbar-brand">
+            <button className="navbar-brand" onClick={onOpenModal}>
               <img src={blind} alt="Blindness mode icon" />
             </button>
           </li>
@@ -57,7 +61,7 @@ const Header = ({ toggleDarkMode, toggleLightMode }: ThemeToggleProps) => {
             </button>
           </li>
           <li className="nav-item">
-            <button className="navbar-brand">
+            <button className="navbar-brand" onClick={onOpenModal}>
               <img src={blind} alt="Blindness mode icon" />
               <p>Modo daltonismo</p>
             </button>

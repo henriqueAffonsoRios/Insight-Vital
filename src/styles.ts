@@ -1,7 +1,18 @@
-import styled, { createGlobalStyle } from 'styled-components'
+import styled, { createGlobalStyle, css } from 'styled-components'
 
 interface ContainerProps {
   isDarkMode: boolean
+}
+
+export type FilterType =
+  | 'protanopia'
+  | 'deuteranopia'
+  | 'tritanopia'
+  | 'achromatopsia'
+  | 'achromatomaly'
+
+interface FilterWrapperProps {
+  type: FilterType | 'sem filtro'
 }
 
 export const cores = {
@@ -12,6 +23,28 @@ export const cores = {
   preto: '#000000',
   cinzaEscuro: '#1A1A1A'
 }
+
+const colorBlindnessFilters: Record<FilterType, ReturnType<typeof css>> = {
+  protanopia: css`
+    filter: url(#protanopia);
+  `,
+  deuteranopia: css`
+    filter: url(#deuteranopia);
+  `,
+  tritanopia: css`
+    filter: url(#tritanopia);
+  `,
+  achromatopsia: css`
+    filter: url(#achromatopsia);
+  `,
+  achromatomaly: css`
+    filter: url(#achromatomaly);
+  `
+}
+
+export const FilterWrapper = styled.div<FilterWrapperProps>`
+  ${({ type }) => (type !== 'sem filtro' ? colorBlindnessFilters[type] : '')}
+`
 
 export const breakpoints = {
   desktop: '991px',
