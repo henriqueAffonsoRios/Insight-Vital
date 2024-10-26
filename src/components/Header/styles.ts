@@ -30,6 +30,7 @@ export const HeaderContainer = styled.header`
 
 export const Hamburguer = styled.div`
   width: 32px;
+  cursor: pointer;
 
   span {
     height: 2px;

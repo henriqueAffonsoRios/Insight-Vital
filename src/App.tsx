@@ -5,6 +5,7 @@ import BarraFiltro from './components/BarraFiltro'
 import ConteudoPrincipal from './components/ConteudoMain'
 import Footer from './components/Footer'
 import ColorBlindnessModal from './components/Modal'
+import Narrador from './components/Narrador'
 
 function App() {
   const [darkMode, setDarkMode] = useState(false)
@@ -12,9 +13,15 @@ function App() {
   const [selectedFilter, setSelectedFilter] = useState<
     FilterType | 'sem filtro'
   >('sem filtro')
+  const [isNarratorActive, setIsNarratorActive] = useState(false)
+
+  const toggleNarrator = () => {
+    setIsNarratorActive(!isNarratorActive)
+  }
 
   const handleOpenModal = () => setModalVisible(true)
   const handleCloseModal = () => setModalVisible(false)
+
   const handleSelectFilter = (type: FilterType | 'sem filtro') => {
     setSelectedFilter(type)
     setModalVisible(false)
@@ -39,6 +46,7 @@ function App() {
             toggleDarkMode={toggleDarkMode}
             toggleLightMode={toggleLightMode}
             onOpenModal={handleOpenModal}
+            onToggleNarrator={toggleNarrator}
           />
           <div className="container p-0 mt-5">
             <BarraFiltro />
@@ -57,6 +65,7 @@ function App() {
           )}
           <Footer />
         </div>
+        {isNarratorActive && <Narrador isActive={isNarratorActive} />}
       </FilterWrapper>
     </>
   )

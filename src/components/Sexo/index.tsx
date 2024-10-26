@@ -18,7 +18,14 @@ const SexoComponente = () => {
     <>
       <h4>Sexo</h4>
       <Dropdown show={dropdownOpen} onToggle={toggleDropdown}>
-        <ToggleDropdown className="text-center w-100 d-flex justify-content-center align-items-center">
+        <ToggleDropdown
+          className="text-center w-100 d-flex justify-content-center align-items-center narrable-icon"
+          data-narration={
+            selectedDropdown !== 'Selecionar'
+              ? selectedDropdown
+              : 'Selecionar sexo'
+          }
+        >
           {selectedDropdown}
         </ToggleDropdown>
         <MenuDropdown className="w-100 text-center">

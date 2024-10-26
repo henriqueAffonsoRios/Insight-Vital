@@ -89,7 +89,14 @@ const DropdownEstado: React.FC = () => {
         onToggle={() => setShowDropdown(!showDropdown)}
         className="custom-dropdown w-100"
       >
-        <ToggleDropdown className="w-100 text-center d-flex justify-content-center align-items-center">
+        <ToggleDropdown
+          className="w-100 text-center d-flex justify-content-center align-items-center narrable-icon"
+          data-narration={
+            selectedEstados.length === 0
+              ? 'Selecionar estado'
+              : selectedEstados.join(', ')
+          }
+        >
           {selectedEstados.length === 0
             ? 'Selecionar'
             : selectedEstados.join(', ')}
