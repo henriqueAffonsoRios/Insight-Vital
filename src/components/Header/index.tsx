@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useTranslation } from 'react-i18next'
 
 import * as S from './styles'
 
@@ -21,6 +22,7 @@ const Header = ({
   onToggleNarrator
 }: HeaderProps) => {
   const [isOpen, setIsOpen] = useState(false)
+  const { t } = useTranslation()
 
   return (
     <S.HeaderContainer>
@@ -29,14 +31,14 @@ const Header = ({
           src={logo}
           alt="Insight Vital"
           className="narrable-icon"
-          data-narration="Logotipo Insight Vital"
+          data-narration={t('insightLogo')}
         />
         <ul className="nav navbar navbar-expand">
           <li className="nav-item">
             <button
               className="navbar-brand narrable-icon"
               onClick={onToggleNarrator}
-              data-narration="Modo narrador"
+              data-narration={t('narratorMode')}
             >
               <img src={avatar} alt="Narrator mode icon" />
             </button>
@@ -45,7 +47,7 @@ const Header = ({
             <button
               className="navbar-brand narrable-icon"
               onClick={onOpenModal}
-              data-narration="Modo daltonismo"
+              data-narration={t('colorBlindMode')}
             >
               <img src={blind} alt="Blindness mode icon" />
             </button>
@@ -54,7 +56,7 @@ const Header = ({
             <button
               className="navbar-brand narrable-icon"
               onClick={toggleLightMode}
-              data-narration="Tema claro"
+              data-narration={t('lightTheme')}
             >
               <img src={sun} alt="Light mode icon" />
             </button>
@@ -63,7 +65,7 @@ const Header = ({
             <button
               className="navbar-brand narrable-icon"
               onClick={toggleDarkMode}
-              data-narration="Tema escuro"
+              data-narration={t('darkTheme')}
             >
               <img src={night} alt="Dark mode icon" />
             </button>
@@ -81,40 +83,40 @@ const Header = ({
             <button
               className="navbar-brand narrable-icon"
               onClick={onToggleNarrator}
-              data-narration="Modo narrador"
+              data-narration={t('narratorMode')}
             >
               <img src={avatar} alt="Narrator mode icon" />
-              <p>Modo narrador</p>
+              <p>{t('narratorMode')}</p>
             </button>
           </li>
           <li className="nav-item">
             <button
               className="navbar-brand narrable-icon"
               onClick={onOpenModal}
-              data-narration="Modo daltonismo"
+              data-narration={t('colorBlindMode')}
             >
               <img src={blind} alt="Blindness mode icon" />
-              <p>Modo daltonismo</p>
+              <p>{t('colorBlindMode')}</p>
             </button>
           </li>
           <li className="nav-item">
             <button
               className="navbar-brand narrable-icon"
               onClick={toggleLightMode}
-              data-narration="Tema claro"
+              data-narration={t('lightTheme')}
             >
               <img src={sun} alt="Light mode icon" />
-              <p>Tema claro</p>
+              <p>{t('lightTheme')}</p>
             </button>
           </li>
           <li className="nav-item">
             <button
               className="navbar-brand narrable-icon"
               onClick={toggleDarkMode}
-              data-narration="Tema escuro"
+              data-narration={t('darkTheme')}
             >
               <img src={night} alt="Dark mode icon" />
-              <p>Tema escuro</p>
+              <p>{t('darkTheme')}</p>
             </button>
           </li>
         </ul>

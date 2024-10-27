@@ -52,12 +52,12 @@ export const MenuDropdown = styled(Dropdown.Menu)<{ menuWidth: number }>`
   margin-top: 0;
   background-color: ${cores.amarelo};
   border: none;
-  transform: translate(0px, 32px) !important;
   min-width: inherit !important;
   width: ${(props) => props.menuWidth}px !important;
+  font-size: 15px !important;
 
   @media (min-width: ${breakpoints.desktop}) {
-    transform: translate(0px, -78px) !important;
+    transform: translate(0px, -77px) !important;
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
   }

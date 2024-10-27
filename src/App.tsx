@@ -1,4 +1,6 @@
 import React, { useState } from 'react'
+import { useTranslation } from 'react-i18next'
+
 import GlobalCss, { FilterType, FilterWrapper, Main } from './styles'
 import Header from './components/Header'
 import BarraFiltro from './components/BarraFiltro'
@@ -10,10 +12,11 @@ import Narrador from './components/Narrador'
 function App() {
   const [darkMode, setDarkMode] = useState(false)
   const [modalVisible, setModalVisible] = useState(false)
-  const [selectedFilter, setSelectedFilter] = useState<
-    FilterType | 'sem filtro'
-  >('sem filtro')
+  const [selectedFilter, setSelectedFilter] = useState<FilterType | 'noFilter'>(
+    'noFilter'
+  )
   const [isNarratorActive, setIsNarratorActive] = useState(false)
+  const { i18n } = useTranslation()
 
   const toggleNarrator = () => {
     setIsNarratorActive(!isNarratorActive)
@@ -22,7 +25,7 @@ function App() {
   const handleOpenModal = () => setModalVisible(true)
   const handleCloseModal = () => setModalVisible(false)
 
-  const handleSelectFilter = (type: FilterType | 'sem filtro') => {
+  const handleSelectFilter = (type: FilterType | 'noFilter') => {
     setSelectedFilter(type)
     setModalVisible(false)
   }
@@ -39,7 +42,7 @@ function App() {
     <>
       <GlobalCss isDarkMode={darkMode} />
       <FilterWrapper
-        type={selectedFilter !== 'sem filtro' ? selectedFilter : 'sem filtro'}
+        type={selectedFilter !== 'noFilter' ? selectedFilter : 'noFilter'}
       >
         <div className="d-flex flex-column min-vh-100">
           <Header
@@ -65,7 +68,7 @@ function App() {
           )}
           <Footer />
         </div>
-        {isNarratorActive && <Narrador isActive={isNarratorActive} />}
+        <Narrador isActive={isNarratorActive} language={i18n.language} />
       </FilterWrapper>
     </>
   )

@@ -1,14 +1,15 @@
+import { useTranslation } from 'react-i18next'
+
 import laco from '../../assets/images/laço.png'
 
 import { ContainerPai } from './styles'
 
 const ConteudoPrincipal = () => {
-  const texto =
-    'Você não está sozinho. Cada dado aqui conta uma história, e juntos podemos fazer a diferença.'
+  const { t } = useTranslation()
 
   return (
     <ContainerPai className="mx-5">
-      <h4>{texto}</h4>
+      <h4>{t('message')}</h4>
       <img src={laco} alt="laço amarelo" />
     </ContainerPai>
   )

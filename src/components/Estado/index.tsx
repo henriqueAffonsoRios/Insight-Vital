@@ -1,6 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { Dropdown } from 'react-bootstrap'
+import { useTranslation } from 'react-i18next'
 import axios from 'axios'
+
 import {
   Btn,
   Buscar,
@@ -22,6 +24,7 @@ const DropdownEstado: React.FC = () => {
   const [selectedEstados, setSelectedEstados] = useState<string[]>([])
   const [showDropdown, setShowDropdown] = useState<boolean>(false)
   const [searchTerm, setSearchTerm] = useState<string>('')
+  const { t } = useTranslation()
 
   useEffect(() => {
     axios
@@ -83,7 +86,7 @@ const DropdownEstado: React.FC = () => {
 
   return (
     <>
-      <h4>Estado</h4>
+      <h4>{t('state')}</h4>
       <Dropdown
         show={showDropdown}
         onToggle={() => setShowDropdown(!showDropdown)}
@@ -93,20 +96,23 @@ const DropdownEstado: React.FC = () => {
           className="w-100 text-center d-flex justify-content-center align-items-center narrable-icon"
           data-narration={
             selectedEstados.length === 0
-              ? 'Selecionar estado'
+              ? t('select') + ' ' + t('state')
               : selectedEstados.join(', ')
           }
         >
           {selectedEstados.length === 0
-            ? 'Selecionar'
+            ? t('select')
             : selectedEstados.join(', ')}
         </ToggleDropdown>
 
-        <MenuDropdown className="w-100 text-center">
+        <MenuDropdown
+          className="w-100 text-center"
+          popperConfig={{ modifiers: [{ name: 'flip', enabled: false }] }}
+        >
           <DropdownContainer>
             <Buscar
               type="text"
-              placeholder="Buscar"
+              placeholder={t('search')}
               value={searchTerm}
               onChange={handleSearch}
             />

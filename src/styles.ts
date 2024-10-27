@@ -12,7 +12,7 @@ export type FilterType =
   | 'achromatomaly'
 
 interface FilterWrapperProps {
-  type: FilterType | 'sem filtro'
+  type: FilterType | 'noFilter'
 }
 
 export const cores = {
@@ -43,7 +43,7 @@ const colorBlindnessFilters: Record<FilterType, ReturnType<typeof css>> = {
 }
 
 export const FilterWrapper = styled.div<FilterWrapperProps>`
-  ${({ type }) => (type !== 'sem filtro' ? colorBlindnessFilters[type] : '')}
+  ${({ type }) => (type !== 'noFilter' ? colorBlindnessFilters[type] : '')}
 `
 
 export const breakpoints = {

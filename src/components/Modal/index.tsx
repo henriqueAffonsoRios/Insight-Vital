@@ -1,24 +1,27 @@
 import React from 'react'
+import { useTranslation } from 'react-i18next'
+
 import { FilterButton, ModalContainer, Overlay } from './styles'
 import { FilterType } from '../../styles'
 
 interface ModalProps {
   onClose: () => void
-  onSelectFilter: (type: FilterType | 'sem filtro') => void
+  onSelectFilter: (type: FilterType | 'noFilter') => void
 }
 
 const ColorBlindnessModal: React.FC<ModalProps> = ({
   onClose,
   onSelectFilter
 }) => {
-  const filterOptions: (FilterType | 'sem filtro')[] = [
-    'sem filtro',
+  const filterOptions: (FilterType | 'noFilter')[] = [
+    'noFilter',
     'protanopia',
     'deuteranopia',
     'tritanopia',
     'achromatopsia',
     'achromatomaly'
   ]
+  const { t } = useTranslation()
 
   const handleBackgroundClick = (e: React.MouseEvent) => {
     if (e.target === e.currentTarget) {
@@ -29,10 +32,10 @@ const ColorBlindnessModal: React.FC<ModalProps> = ({
   return (
     <Overlay onClick={handleBackgroundClick}>
       <ModalContainer>
-        <h3>Escolha o Filtro</h3>
+        <h3>{t('chooseFilter')}</h3>
         {filterOptions.map((type) => (
           <FilterButton key={type} onClick={() => onSelectFilter(type)}>
-            {type.charAt(0).toUpperCase() + type.slice(1)}
+            {t(type)}
           </FilterButton>
         ))}
       </ModalContainer>
