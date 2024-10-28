@@ -12,7 +12,7 @@ const Narrador: React.FC<NarradorProps> = ({ isActive, language }) => {
 
   useEffect(() => {
     if (!synth) {
-      console.warn('Web Speech API not supported')
+      console.warn('Web Speech API não encontrada')
       return
     }
 
