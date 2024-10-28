@@ -1,8 +1,11 @@
+// DropdownStyles.ts
 import styled from 'styled-components'
 import { Dropdown } from 'react-bootstrap'
-import { breakpoints, cores } from '../../styles'
+import { cores, breakpoints } from '../styles'
 
-export const ToggleDropdown = styled(Dropdown.Toggle)`
+export const ToggleDropdown = styled(Dropdown.Toggle)<{
+  isLanguageMenu?: boolean
+}>`
   border: none;
   box-shadow: none;
   position: relative;
@@ -13,13 +16,7 @@ export const ToggleDropdown = styled(Dropdown.Toggle)`
 
   &:hover,
   &:active,
-  &:checked {
-    background-color: ${cores.amarelo} !important;
-    border-color: ${cores.amarelo} !important;
-    color: ${cores.azul} !important;
-    outline: none !important;
-  }
-
+  &:checked,
   &.btn:focus,
   &.btn:active,
   &.btn.show {
@@ -35,8 +32,14 @@ export const ToggleDropdown = styled(Dropdown.Toggle)`
 
   @media (min-width: ${breakpoints.desktop}) {
     &.show {
-      border-top-left-radius: 0;
-      border-top-right-radius: 0;
+      border-top-left-radius: ${({ isLanguageMenu }) =>
+        isLanguageMenu ? '0' : '0.375rem'};
+      border-top-right-radius: ${({ isLanguageMenu }) =>
+        isLanguageMenu ? '0' : '0.375rem'};
+      border-bottom-left-radius: ${({ isLanguageMenu }) =>
+        isLanguageMenu ? '0.375rem' : '0'};
+      border-bottom-right-radius: ${({ isLanguageMenu }) =>
+        isLanguageMenu ? '0.375rem' : '0'};
     }
   }
 
@@ -48,7 +51,10 @@ export const ToggleDropdown = styled(Dropdown.Toggle)`
   }
 `
 
-export const MenuDropdown = styled(Dropdown.Menu)<{ menuWidth: number }>`
+export const MenuDropdown = styled(Dropdown.Menu)<{
+  menuWidth?: number
+  isLanguageMenu?: boolean
+}>`
   margin-top: 0;
   background-color: ${cores.amarelo};
   border: none;
@@ -57,9 +63,18 @@ export const MenuDropdown = styled(Dropdown.Menu)<{ menuWidth: number }>`
   font-size: 15px !important;
 
   @media (min-width: ${breakpoints.desktop}) {
-    transform: translate(0px, -77px) !important;
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
+    transform: ${({ isLanguageMenu }) =>
+      isLanguageMenu
+        ? 'translate(0px, -77px)'
+        : 'translate(0px, 34px)'} !important;
+    border-top-left-radius: ${({ isLanguageMenu }) =>
+      isLanguageMenu ? '0.375rem' : '0'};
+    border-top-right-radius: ${({ isLanguageMenu }) =>
+      isLanguageMenu ? '0.375rem' : '0'};
+    border-bottom-left-radius: ${({ isLanguageMenu }) =>
+      isLanguageMenu ? '0' : '0.375rem'};
+    border-bottom-right-radius: ${({ isLanguageMenu }) =>
+      isLanguageMenu ? '0' : '0.375rem'};
   }
 
   @media (max-width: ${breakpoints.desktop}) {
@@ -75,7 +90,6 @@ export const MenuDropdown = styled(Dropdown.Menu)<{ menuWidth: number }>`
     background-color: ${cores.amarelo} !important;
     border-color: ${cores.amarelo} !important;
     color: ${cores.azul} !important;
-    outline: none !important;
   }
 `
 

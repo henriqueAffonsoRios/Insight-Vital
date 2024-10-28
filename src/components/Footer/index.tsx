@@ -4,7 +4,7 @@ import linkedin from '../../assets/images/linkedin.png'
 import github from '../../assets/images/github.png'
 
 import { FooterContainer } from './styles'
-import IdiomaComponente from '../IdiomaSelect'
+import IdiomaComponente from '../Dropdown/IdiomaSelect'
 
 const Footer = () => {
   const { t } = useTranslation()

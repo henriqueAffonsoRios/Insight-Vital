@@ -1,8 +1,8 @@
 import { useTranslation } from 'react-i18next'
 
 import DropdownEstado from '../Estado'
-import ModeloGrafico from '../ModeloGrafico'
-import SexoComponente from '../Sexo'
+import ModeloGrafico from '../Dropdown/ModeloGrafico'
+import SexoComponente from '../Dropdown/Sexo'
 
 import { FilterContainer, Item } from './styles'
 

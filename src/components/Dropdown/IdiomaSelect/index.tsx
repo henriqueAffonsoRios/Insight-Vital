@@ -1,61 +1,53 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Dropdown } from 'react-bootstrap'
 import { useTranslation } from 'react-i18next'
-
-import { ToggleDropdown, MenuDropdown, Item } from './styles'
+import {
+  ToggleDropdown,
+  MenuDropdown,
+  Item
+} from '../../../styles/DropdownStyles'
 
 const IdiomaComponente = () => {
-  const [selectedDropdown, setSelectedDropdown] = useState('Português')
-  const [dropdownOpen, setDropdownOpen] = useState(false)
-  const toggleRef = useRef<HTMLButtonElement>(null)
-  const [menuWidth, setMenuWidth] = useState(0)
   const { t, i18n } = useTranslation()
+  const [selectedLanguage, setSelectedLanguage] = useState('portuguese')
+  const [dropdownOpen, setDropdownOpen] = useState(false)
+  const [menuWidth, setMenuWidth] = useState(0)
 
   const options = ['portuguese', 'english']
 
-  const toggleDropdown = () => setDropdownOpen(!dropdownOpen)
-
-  const toggleLanguage = (lng: string) => {
-    i18n.changeLanguage(lng)
-  }
+  const toggleDropdown = () => setDropdownOpen((prev) => !prev)
 
   const handleSelect = (option: string) => {
-    setSelectedDropdown(option)
-    if (option === 'english') {
-      toggleLanguage('en')
-    } else {
-      toggleLanguage('pt')
-    }
+    setSelectedLanguage(option)
+    i18n.changeLanguage(option === 'english' ? 'en' : 'pt')
     setDropdownOpen(false)
   }
 
   useEffect(() => {
-    if (toggleRef.current) {
-      const resizeObserver = new ResizeObserver(() => {
-        if (toggleRef.current) {
-          setMenuWidth(toggleRef.current.offsetWidth)
-        }
-      })
-
-      resizeObserver.observe(toggleRef.current)
-
-      return () => resizeObserver.disconnect()
+    const handleResize = () => {
+      const toggleElement = document.getElementById('toggle-dropdown')
+      if (toggleElement) setMenuWidth(toggleElement.offsetWidth)
     }
+    handleResize()
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
   }, [])
 
   return (
     <>
       <Dropdown show={dropdownOpen} onToggle={toggleDropdown}>
         <ToggleDropdown
-          ref={toggleRef}
+          id="toggle-dropdown"
           className="text-center w-100 d-flex justify-content-center align-items-center"
+          isLanguageMenu={true}
         >
-          {t(selectedDropdown)}
+          {t(selectedLanguage)}
         </ToggleDropdown>
         <MenuDropdown
           className="text-center"
           menuWidth={menuWidth}
           popperConfig={{ modifiers: [{ name: 'flip', enabled: false }] }}
+          isLanguageMenu={true}
         >
           {options.map((option) => (
             <Item

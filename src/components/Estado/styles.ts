@@ -88,7 +88,7 @@ export const Buscar = styled.input`
 `
 
 export const EstadoList = styled.div`
-  max-height: 60px; /* Altura máxima para a lista de estados */
+  max-height: 60px;
   overflow-y: auto;
   border-top: 1px solid #ccc;
 
