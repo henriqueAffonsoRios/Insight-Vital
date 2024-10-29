@@ -65,7 +65,7 @@ export const MenuDropdown = styled(Dropdown.Menu)<{
   @media (min-width: ${breakpoints.desktop}) {
     transform: ${({ isLanguageMenu }) =>
       isLanguageMenu
-        ? 'translate(0px, -77px)'
+        ? 'translate(0px, -74px)'
         : 'translate(0px, 34px)'} !important;
     border-top-left-radius: ${({ isLanguageMenu }) =>
       isLanguageMenu ? '0.375rem' : '0'};

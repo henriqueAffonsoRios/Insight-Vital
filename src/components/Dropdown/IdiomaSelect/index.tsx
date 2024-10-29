@@ -15,12 +15,12 @@ const IdiomaComponente = () => {
 
   const options = ['portuguese', 'english']
 
-  const toggleDropdown = () => setDropdownOpen((prev) => !prev)
+  const toggleDropdown = () => setDropdownOpen(!dropdownOpen)
 
   const handleSelect = (option: string) => {
     setSelectedLanguage(option)
     i18n.changeLanguage(option === 'english' ? 'en' : 'pt')
-    setDropdownOpen(false)
+    setDropdownOpen(false) // Garante o fechamento ao selecionar uma opção
   }
 
   useEffect(() => {
@@ -34,20 +34,21 @@ const IdiomaComponente = () => {
   }, [])
 
   return (
-    <>
-      <Dropdown show={dropdownOpen} onToggle={toggleDropdown}>
-        <ToggleDropdown
-          id="toggle-dropdown"
-          className="text-center w-100 d-flex justify-content-center align-items-center"
-          isLanguageMenu={true}
-        >
-          {t(selectedLanguage)}
-        </ToggleDropdown>
+    <Dropdown show={dropdownOpen} onToggle={toggleDropdown}>
+      <ToggleDropdown
+        id="toggle-dropdown"
+        className="text-center w-100 d-flex justify-content-center align-items-center"
+        onClick={toggleDropdown}
+        isLanguageMenu={true}
+      >
+        {t(selectedLanguage)}
+      </ToggleDropdown>
+      {dropdownOpen && (
         <MenuDropdown
           className="text-center"
           menuWidth={menuWidth}
-          popperConfig={{ modifiers: [{ name: 'flip', enabled: false }] }}
           isLanguageMenu={true}
+          popperConfig={{ modifiers: [{ name: 'flip', enabled: false }] }}
         >
           {options.map((option) => (
             <Item
@@ -59,8 +60,8 @@ const IdiomaComponente = () => {
             </Item>
           ))}
         </MenuDropdown>
-      </Dropdown>
-    </>
+      )}
+    </Dropdown>
   )
 }
 
