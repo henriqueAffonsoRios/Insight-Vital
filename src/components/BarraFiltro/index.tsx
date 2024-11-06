@@ -6,7 +6,11 @@ import SexoComponente from '../Dropdown/Sexo'
 
 import { FilterContainer, Item } from './styles'
 
-const BarraFiltro = () => {
+interface BotaoFiltrarProps {
+  onFilterClick: () => void
+}
+
+const BarraFiltro: React.FC<BotaoFiltrarProps> = ({ onFilterClick }) => {
   const { t } = useTranslation()
 
   return (
@@ -23,7 +27,9 @@ const BarraFiltro = () => {
         </Item>
       </ul>
       <div className="col-lg-2 col-12 mt-lg-0 mt-3 p-0 text-center">
-        <button className="btn w-100">{t('filter')}</button>
+        <button className="btn w-100" onClick={onFilterClick}>
+          {t('filter')}
+        </button>
       </div>
     </FilterContainer>
   )

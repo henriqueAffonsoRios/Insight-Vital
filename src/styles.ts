@@ -2,6 +2,7 @@ import styled, { createGlobalStyle, css } from 'styled-components'
 
 interface ContainerProps {
   isDarkMode: boolean
+  isFiltered?: boolean
 }
 
 export type FilterType =
@@ -73,6 +74,8 @@ export const Main = styled.div<ContainerProps>`
   border-bottom-right-radius: 10px;
   overflow: hidden;
   flex: 1;
+  padding-left: ${(props) => (props.isFiltered ? '10px' : '40px')};
+  padding-right: ${(props) => (props.isFiltered ? '10px' : '40px')};
 `
 
 export default GlobalCss

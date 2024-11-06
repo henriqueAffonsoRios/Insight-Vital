@@ -17,6 +17,11 @@ function App() {
   )
   const [isNarratorActive, setIsNarratorActive] = useState(false)
   const { i18n } = useTranslation()
+  const [isFiltered, setIsFiltered] = useState(false)
+
+  const handleFilterClick = () => {
+    setIsFiltered(true)
+  }
 
   const toggleNarrator = () => {
     setIsNarratorActive(!isNarratorActive)
@@ -52,13 +57,14 @@ function App() {
             onToggleNarrator={toggleNarrator}
           />
           <div className="container p-0 mt-5">
-            <BarraFiltro />
+            <BarraFiltro onFilterClick={handleFilterClick} />
           </div>
           <Main
             isDarkMode={darkMode}
-            className="container p-5 mb-5 d-flex align-items-center justify-content-center"
+            isFiltered={isFiltered}
+            className="container py-5 mb-5 d-block"
           >
-            <ConteudoPrincipal />
+            <ConteudoPrincipal isFiltered={isFiltered} />
           </Main>
           {modalVisible && (
             <ColorBlindnessModal
